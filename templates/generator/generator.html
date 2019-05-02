@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block bodytext %}
+<div class="text-center">
+    <p> <h3> This is simple codes generator app ! </h3> </p>
+<form action="" method="post">
+    {% csrf_token %}
+
+<p> Choose option :</p>
+<p> {{ form.wform }} </p>
+<p> Insert the number of symbols that the code shoud contain :</p>
+<p>  {{ form.numform }} </p>
+<p> Insert how many codes shoudl be generated :</p>
+<p>  {{ form.numform2 }} </p>
+<br>
+
+<input type="submit" class="btn btn-primary" value="Generate">
+</form>
+
+<br>
+</div>
+
+{% endblock %}

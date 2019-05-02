@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block bodytext %}
+<div class="text-center">
+    <p><h3> RESULTS ! </h3> </p>
+
+    {% csrf_token %}
+    {% for item in result %}
+    {{ item }}
+    <br>
+    
+    {% endfor %}
+    
+
+<br>
+    <a href="{% url 'generator' %}" class="btn btn-primary my-2">Generate Codes Again<a />
+<form action="{% url 'export' %}" method="get">
+    <button type="submit" name="export" value="{{ result }}" class="btn btn-primary">Export to CSV</button>
+</form>
+</div>
+
+{% endblock %}

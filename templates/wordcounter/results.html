@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block bodytext %}
+<p> The original text : </p>
+<br>
+<p class=" p-2 border border-primary rounded bg-primary">{{ fulltext }}</p>
+<br>
+<p><h3>The total amount of words in the text is {{ totalamount }} !</h3></p>
+ <br>
+ <p>The frequency of words is :</p>
+ 
+    {% for key, item in sortedwords %}
+    {{ key }}&nbsp;&nbsp;&nbsp; {{ item }}
+    <br>
+    {% endfor%}
+    <br>
+<div class="text-center">   <a href="{% url 'words' %}" class="btn btn-primary my-2">Count Again<a />
+    <form action="{% url 'exportgener' %}" method="GET">
+        <button type="submit" name="exportgener" value="{{ sortedwords }}" class="btn btn-primary">Export to CSV</button>
+    </form>
+</div>
+{% endblock %}
+
+ 

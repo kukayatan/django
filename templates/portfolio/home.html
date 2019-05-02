@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block jambotron %}
+
+
+<section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Hi there !</h1>
+          <p class="lead text-muted">My name is Jan. I totally fell in love with Python a year ago. Since then, I have been constantly trying to build up my knowledge of it. 
+            This is my first app in Django framework that I am trying to master right now :)
+          </p>
+          <p>
+            {% load static %}
+            <img src="{% static "face.jpeg" %}" alt="My image" width="200" height="250" class="rounded-circle">
+          </p>
+          <br>
+           <p>
+            <a href="http://www.linkedin.com" ><i class="fa fa-linkedin-square" style="font-size:48px;color:lightslategray"  ></i></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/kukayatan" ><i class="fa fa-github-square" style="font-size:48px;color:lightslategray"></i></a>
+           </p>   
+                
+              
+            
+
+          
+        </div>
+</section>
+
+{% endblock %}
+
