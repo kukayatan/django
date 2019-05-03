@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from portfolio.views import home_view,about
 from wordcounter.views import words_putin, export_view_gener
 from generator.views import gener_putin,export_view
@@ -27,4 +27,5 @@ urlpatterns = [
     path('exportgener/', export_view_gener, name='exportgener'),
     path('generator/', gener_putin, name='generator'),
     path('export/', export_view, name='export'),
+    path('ml/', include('machinelearning.urls')),
 ]
