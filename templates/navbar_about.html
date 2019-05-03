@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'home' %}">Jan´s Page</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'about' %}">About me</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Small projects
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'words' %}">Word Counter</a>
+            <a class="dropdown-item" href="{% url 'generator' %}">Generator</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'ml_home' %}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Machine Learning
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'ml_home' %}">Linear Regresion</a>
+            <a class="dropdown-item" href="{% url 'ml_home' %}">Logistic Regression</a>
+            <a class="dropdown-item" href="{% url 'ml_home' %}">K_N_Neighbors</a>
+            <a class="dropdown-item" href="{% url 'ml_home' %}">Decision Trees</a>
+            <a class="dropdown-item" href="{% url 'ml_home' %}">Random Forest</a>
+            <a class="dropdown-item" href="{% url 'ml_home' %}">SVC</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
