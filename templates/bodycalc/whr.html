@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block navbar_block %}
+{% include 'navbar_project.html' %}
+{% endblock %}
+{% block bodytext %}
+<div class="text-center">
+    <p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <p> Choose gender :</p>
+            <p> {{ form.wform }} </p>
+            <p> Insert Your waist measurement in cm :</p>
+            <p> {{ form.formweist }} </p>
+            <p> Insert Your hip measurement in cm :</p>
+            <p>  {{ form.formhip }} </p>
+            
+            <br>
+            
+            <input type="submit" class="btn btn-primary" value="Calculate">
+            </form>
+            </p>
+            
+   
+</div>
+{% endblock %}

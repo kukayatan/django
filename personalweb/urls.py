@@ -18,6 +18,7 @@ from django.urls import path,include
 from portfolio.views import home_view,about
 from wordcounter.views import words_putin, export_view_gener
 from generator.views import gener_putin,export_view
+from bodycalculator.views import bodycalc_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +28,6 @@ urlpatterns = [
     path('exportgener/', export_view_gener, name='exportgener'),
     path('generator/', gener_putin, name='generator'),
     path('export/', export_view, name='export'),
+    path('bodycalculator/', include('bodycalculator.urls')),
     path('ml/', include('machinelearning.urls')),
 ]

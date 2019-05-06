@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block navbar_block %}
+{% include 'navbar_project.html' %}
+{% endblock %}
+{% block bodytext %}
+<div class="text-center">
+    <p>
+        {% csrf_token %}
+        
+        {{ result }}
+        </p>
+
+        <p><a href="{% url 'whr' %}" class="btn btn-primary my-2">Calculate again<a /></p>
+</div>
+{% endblock %}

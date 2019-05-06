@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block navbar_block %}
+{% include 'navbar_project.html' %}
+{% endblock %}
+{% block bodytext %}
+<div class="text-center">
+    <h3>Body Index Calculators</h3>
+    <br>
+    <p>Body mass index: A key index for relating weight to height. Abbreviated BMI. BMI is a person's weight in kilograms (kg) divided by his or her height in meters squared. </p>
+    <br>
+    <p><a href="{% url 'bmi' %}" class="btn btn-primary my-2">BMI<a /></p>
+    <br><br>
+    <p>The waist circumference measurement divided by the hip circumference measurement. For both men and women, a waist-to-hip ratio (WHR) of 1.0 or higher is considered "at risk" for undesirable health consequences, such as heart disease and ailments associated with OVERWEIGHT. A healthy WHR is 0.90 or less for men, and 0.80 or less for women. </p>
+    <br>
+    <p><a href="{% url 'whr' %}" class="btn btn-primary my-2">Waist to Hip Ratio<a /></p>
+</div>
+{% endblock %}
