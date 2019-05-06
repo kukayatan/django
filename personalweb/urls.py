@@ -18,7 +18,7 @@ from django.urls import path,include
 from portfolio.views import home_view,about
 from wordcounter.views import words_putin, export_view_gener
 from generator.views import gener_putin,export_view
-from bodycalculator.views import bodycalc_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
