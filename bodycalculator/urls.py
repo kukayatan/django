@@ -4,7 +4,7 @@ from .views import bodycalc_view, bmi, whr
 
 
 urlpatterns = [
-    path('', bodycalc_view, name='bodycalc'),
+    path('', bodycalc_view, name='bodycalculator'),
     path('bmi/', bmi, name='bmi'),
     path('whr/', whr, name='whr'),
 
