@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'portfolio',
     'generator',
     'wordcounter',
-    'widget_tweaks',
+    
     
 ]
 
