@@ -1,0 +1,65 @@
+
+
+
+
+{% extends 'base.html' %}
+{% block navbar_block %}
+{% include 'navbar_ml.html' %}
+{% endblock %}
+{% block bodytext %}
+
+<p>Let's import all necessary packages and load the csv file into the dataframe.     </p>
+
+<p class="px-3 py-3 bg-white rounded border border-secondary font-weight-light">  
+    Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Ut tempus purus at lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut tempus purus at lorem. Curabitur vitae diam non enim vestibulum interdum. Donec vitae arcu. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Aliquam in lorem sit amet leo accumsan lacinia. Mauris metus. Aenean fermentum risus id tortor. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero.
+</p>
+<div class="px-3 py-3 bg-white rounded border border-secondary font-weight-light text-center "> 
+    <form action="" method="post">
+    {% csrf_token %}
+    <div class="slidecontainer">
+        {{ form.math }} 
+        
+        <p>Math Scoring: <span id="demo"></span></p>
+    </div>
+    <div class="slidecontainer">
+        {{ form.reading }} 
+        
+        <p>Reading Scoring: <span id="demo2"></span></p>
+    </div>
+   
+    <p> {{ form.ethnicity }} </p>
+    <p> {{ form.parent }} </p>
+    <p> {{ form.lunch }} </p>
+    <p> {{ form.preparation }} </p>
+    <p> {{ form.gender }} </p>
+      
+      <script>
+      var slider = document.getElementById("myRange");
+      var output = document.getElementById("demo");
+      output.innerHTML = slider.value;
+      
+      slider.oninput = function() {
+        output.innerHTML = this.value;
+      }
+      var slider2 = document.getElementById("myRange2");
+      var output2 = document.getElementById("demo2");
+      output2.innerHTML = slider2.value;
+      
+      slider2.oninput = function() {
+        output2.innerHTML = this.value;
+      }
+      </script>
+   <input type="submit" class="btn btn-primary" value="Calculate Writing Score">
+</form>
+</div>
+    
+{% if  myarray != "" %}
+
+{{ myarray }}
+
+{% else  %}
+
+
+{% endif %}
+
+{% endblock %}
