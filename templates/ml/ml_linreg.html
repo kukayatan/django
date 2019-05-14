@@ -8,11 +8,13 @@
 {% endblock %}
 {% block bodytext %}
 
-<p>Let's import all necessary packages and load the csv file into the dataframe.     </p>
+<p><h3>Linear Regression </h3>    </p>
+<p>In this case Linear Regression has been used to build the predictive model that would be able to predict the writing score of tested students with high accuracy. The dataset contains seven independet variables (math and reading score, gender, ethnicity, parental level of educationl, lunch, test preparation) and one dependent variable (writing score).</p>
+<p>On the basis of further calculations, the model accuracy is over 94 % and the avarage error of 3.5 points.</p>
+<p>The full code and the dataset you can find <a href="https://github.com/kukayatan/jupyter_test">HERE</a></p>
+<p>To see the full code and graphs that are included in the jupyter notebook, copy and paste the GitHub link <a href="https://nbviewer.jupyter.org/">HERE</a></p>
 
-<p class="px-3 py-3 bg-white rounded border border-secondary font-weight-light">  
-    Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Ut tempus purus at lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut tempus purus at lorem. Curabitur vitae diam non enim vestibulum interdum. Donec vitae arcu. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Aliquam in lorem sit amet leo accumsan lacinia. Mauris metus. Aenean fermentum risus id tortor. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero.
-</p>
+<div class="text-center"><h5>Writing score calculator</h5></div>
 <div class="px-3 py-3 bg-white rounded border border-secondary font-weight-light text-center "> 
     <form action="" method="post">
     {% csrf_token %}
@@ -26,11 +28,15 @@
         
         <p>Reading Scoring: <span id="demo2"></span></p>
     </div>
-   
+   <p>Ethnicity</p>
     <p> {{ form.ethnicity }} </p>
+   <p>Parental Education</p>
     <p> {{ form.parent }} </p>
+    <p>Lunch</p>
     <p> {{ form.lunch }} </p>
+    <p>Test Preparation Course</p>
     <p> {{ form.preparation }} </p>
+    <p>Gender</p>
     <p> {{ form.gender }} </p>
       
       <script>
@@ -52,14 +58,17 @@
    <input type="submit" class="btn btn-primary" value="Calculate Writing Score">
 </form>
 </div>
-    
-{% if  myarray != "" %}
+<br>
+<div class="text-center">  <b>  
+{% if  myarray is not None %}
 
-{{ myarray }}
+According to the model, the estimated writing score would be {{ myarray }} points.
 
 {% else  %}
 
 
 {% endif %}
 
+
+</b></div>
 {% endblock %}
