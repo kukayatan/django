@@ -14,7 +14,22 @@
 <p>The full code and the dataset you can find <a href="https://github.com/kukayatan/jupyter_test">HERE</a></p>
 <p>To see the full code and graphs that are included in the jupyter notebook, copy and paste the GitHub link <a href="https://nbviewer.jupyter.org/">HERE</a></p>
 
+ 
+  {% if  myarray is not None %}
+  <br>
+  <div class="text-center px-3 py-3 border border-success rounded">  <b> 
+  {{ myarray }}
+</b></div>
+  {% else  %}
+  
+  
+  {% endif %}
+  
+  
+  
+<br>
 <div class="text-center"><h5>The Heart Disease Probability Calculator</h5></div>
+
 <div class="px-3 py-3 bg-white rounded border border-secondary font-weight-light text-center "> 
     <form action="" method="post">
     {% csrf_token %}
@@ -104,16 +119,5 @@
 </form>
 </div>
 <br>
-<div class="text-center">  <b>  
-{% if  myarray is not None %}
 
-{{ myarray }}
-
-{% else  %}
-
-
-{% endif %}
-
-
-</b></div>
 {% endblock %}
