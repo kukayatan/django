@@ -1,0 +1,119 @@
+
+
+
+
+{% extends 'base.html' %}
+{% block navbar_block %}
+{% include 'navbar_ml.html' %}
+{% endblock %}
+{% block bodytext %}
+
+<p><h3>Support Vector Machine Clasiffier </h3>    </p>
+<p>he aim of this small analysis is to build a predictive model by using the Support Vector Machine clasiffier. The model will be applied to the test dataset (dowloaded from Kaggle) with patients records and predict if the patient is suffering from the heart disease.</p>
+
+<p>The full code and the dataset you can find <a href="https://github.com/kukayatan/jupyter_test">HERE</a></p>
+<p>To see the full code and graphs that are included in the jupyter notebook, copy and paste the GitHub link <a href="https://nbviewer.jupyter.org/">HERE</a></p>
+
+<div class="text-center"><h5>The Heart Disease Probability Calculator</h5></div>
+<div class="px-3 py-3 bg-white rounded border border-secondary font-weight-light text-center "> 
+    <form action="" method="post">
+    {% csrf_token %}
+    <p>Gender</p>
+    <p> {{ form.gender }} </p>    
+    <div class="slidecontainer">
+        {{ form.age }} 
+        
+        <p>Age: <span id="demo"></span></p>
+    </div>
+    <div class="slidecontainer">
+        {{ form.cp }} 
+        
+        <p>Chest pain type : <span id="demo2"></span></p>
+    </div>
+    <div class="slidecontainer">
+      {{ form.trestbps }} 
+      
+      <p>Resting blood pressure (in mm Hg on admission to the hospital): <span id="demo3"></span></p>
+  </div>
+  <div class="slidecontainer">
+    {{ form.chol }} 
+    
+    <p>Serum cholestoral in mg/dl: <span id="demo4"></span></p>
+</div>
+<p>Fasting blood sugar</p>
+    <p> {{ form.fbs }} </p>  
+    <p>Resting electrocardiographic results: </p>
+    <p> {{ form.restecg }} </p>  
+    <div class="slidecontainer">
+      {{ form.thalach }} 
+      
+      <p>Maximum heart rate achieved: <span id="demo5"></span></p>
+  </div>
+  <p>Exercise induced angina: </p>
+  <p> {{ form.exang }} </p>  
+  <div class="slidecontainer">
+    {{ form.oldpeak }} 
+    
+    <p>ST depression induced by exercise relative to rest: <span id="demo6"></span></p>
+</div>
+      <script>
+      var slider = document.getElementById("age_myRange");
+      var output = document.getElementById("demo");
+      output.innerHTML = slider.value;
+      
+      slider.oninput = function() {
+        output.innerHTML = this.value;
+      }
+      var slider2 = document.getElementById("cp_myRange");
+      var output2 = document.getElementById("demo2");
+      output2.innerHTML = slider2.value;
+      
+      slider2.oninput = function() {
+        output2.innerHTML = this.value;
+      }
+      var slider3 = document.getElementById("trestbps_myRange");
+      var output3 = document.getElementById("demo3");
+      output3.innerHTML = slider3.value;
+      
+      slider3.oninput = function() {
+        output3.innerHTML = this.value;
+      }
+      var slider4 = document.getElementById("chol_myRange");
+      var output4 = document.getElementById("demo4");
+      output4.innerHTML = slider4.value;
+      
+      slider4.oninput = function() {
+        output4.innerHTML = this.value;
+      }
+      var slider5 = document.getElementById("thalach_myRange");
+      var output5 = document.getElementById("demo5");
+      output5.innerHTML = slider5.value;
+      
+      slider5.oninput = function() {
+        output5.innerHTML = this.value;
+      }
+      var slider6 = document.getElementById("oldpeak_myRange");
+      var output6 = document.getElementById("demo6");
+      output6.innerHTML = slider6.value;
+      
+      slider6.oninput = function() {
+        output6.innerHTML = this.value;
+      }
+      </script>
+   <input type="submit" class="btn btn-primary" value="Calculate heart disease probability">
+</form>
+</div>
+<br>
+<div class="text-center">  <b>  
+{% if  myarray is not None %}
+
+{{ myarray }}
+
+{% else  %}
+
+
+{% endif %}
+
+
+</b></div>
+{% endblock %}

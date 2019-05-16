@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import FormLR
+from .forms import FormLR,FormSVC
 import numpy as np
 import os
 from sklearn.externals import joblib    
@@ -17,14 +17,23 @@ def ml_view(request):
 def ml_linreg(request):
     if request.method == 'POST':
         wgender = request.POST['gender']
+
         wlunch = request.POST['lunch']
+
         wethnicity = request.POST['ethnicity']
+
         wprep = request.POST['preparation']
+
         wparent = request.POST['parent']
+
         wmath = int(request.POST['math'])
+
         wmath_list = [wmath] 
+
         wreading = int(request.POST['reading'])
+
         wreading_list = [wreading]
+        
         
         if wgender == 1:
             wgender_list = [0,1]
@@ -78,13 +87,49 @@ def ml_linreg(request):
               
         form = FormLR()
         return render(request,"ml/ml_linreg.html",{'form': form,'myarray':result[0]})  
-
-        
-        
-
         
     else:
         form = FormLR()
         print(form)
         return render(request,"ml/ml_linreg.html",{'form': form})  
     
+def ml_svc(request):
+    if request.method == 'POST':
+        age = int(request.POST['age'])
+        gender = int(request.POST['gender'])
+        cp = int(request.POST['cp'])
+        trestbps = int(request.POST['trestbps'])
+        chol = int(request.POST['chol'])
+        fbs = int(request.POST['fbs'])
+        restecg = int(request.POST['restecg'])
+        thalach = int(request.POST['thalach'])
+        exang = int(request.POST['exang'])
+        oldpeak = float(request.POST['oldpeak'])
+        
+        test_var = [age,gender,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak]
+        myarray = np.asarray(test_var)
+        
+        module_dir = os.path.dirname(__file__)  
+        file_path = os.path.join(module_dir, 'SVC.pkl')  
+        mayarray2 = myarray.reshape(1, -1)
+         
+        from_joblib = joblib.load(file_path) 
+        result = from_joblib.predict(mayarray2) 
+        result = result.flatten().round(1).tolist()
+        if result[0]:
+            result_str = "There is less than 50 % probability of the presence of heart disease in the patient."
+        else:
+            result_str = "There is more than 50 % probability of the presence of heart disease in the patient."
+
+       
+        
+        print(result)
+        form = FormSVC()
+        return render(request,"ml/ml_svc.html",{'form': form,'myarray':result_str}) 
+
+        
+    else:
+        form = FormSVC()
+        print(form)
+        return render(request,"ml/ml_svc.html",{'form': form})  
+
