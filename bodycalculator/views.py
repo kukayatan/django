@@ -9,8 +9,8 @@ def bodycalc_view(request):
 def bmi(request):
     
     if request.method == 'POST':
-        weight = int(request.POST['formweight'])
-        height = int(request.POST['formheight'])
+        weight = float(request.POST['formweight'])
+        height = float(request.POST['formheight'])
         calc = Calculation()
         calc_bmi = calc.bmi(weight,height)
         return render(request, 'bodycalc/bmi_result.html', {'result': calc_bmi})
@@ -23,8 +23,8 @@ def whr(request):
     
     if request.method == 'POST':
         gender = request.POST['wform']
-        weist = int(request.POST['formweist'])
-        hip = int(request.POST['formhip'])
+        weist = float(request.POST['formweist'])
+        hip = float(request.POST['formhip'])
         whr_obj = Calculation()
         whr_result = whr_obj.whr(weist, hip, gender)
         return render(request, 'bodycalc/whr_result.html', {'result': whr_result})
