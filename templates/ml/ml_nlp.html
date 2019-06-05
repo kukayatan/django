@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block navbar_block %}
+{% include 'navbar_ml.html' %}
+{% endblock %}
+{% block bodytext %}
+
+<p><h3>NLP</h3>    </p>
+<p>Thin natural language processing technique has been implemented on SMS SPam Collection Data Set (<a href="https://archive.ics.uci.edu/ml/datasets/sms+spam+collection/">HERE</a>) which containes over 5000 messages. It is possible to put any word or sentence in the text area field and check if this text would be considered spam by the calculated model.</p>
+
+<p>The full code and the dataset you can find <a href="https://github.com/kukayatan/jupyter_test">HERE</a></p>
+<p>To see the full code and graphs that are included in the jupyter notebook, copy and paste the GitHub link <a href="https://nbviewer.jupyter.org/">HERE</a></p>
+
+ 
+  {% if  myarray is not None %}
+  <br>
+  <div class="text-center px-3 py-3 border border-success rounded"> The text that you have inserted would be considered to be <b> 
+  {{ myarray }} !
+</b></div>
+  {% else  %}
+  
+  
+  {% endif %}
+  
+  
+  
+<br>
+<div class="text-center"><h5>SPAM detector</h5></div>
+
+<div class="px-3 py-3 bg-white rounded border border-secondary font-weight-light text-center "> 
+    <form action="" method="post">
+    {% csrf_token %}
+    <p>Put in word or text :</p>
+    <p> {{ form.nlpformobj }} </p>    
+    
+   <input type="submit" class="btn btn-primary" value="Check spam/not spam">
+</form>
+</div>
+<br>
+
+{% endblock %}
