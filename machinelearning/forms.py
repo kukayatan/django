@@ -34,3 +34,5 @@ class FormSVC(forms.Form):
     exang = forms.ChoiceField(choices=CHOICES3, widget=forms.RadioSelect(attrs={'class': 'li_ns'}))
     oldpeak = forms.DecimalField(max_digits=2,decimal_places=1,widget=forms.NumberInput(attrs={'type':'range', 'step': '0.1', 'min': '0', 'max': '5','id':'oldpeak_myRange','class':'slider'}))
     
+class nlpForm(forms.Form):
+    nlpformobj = forms.CharField(label='',widget=forms.Textarea(attrs={'class':'form-control'}))

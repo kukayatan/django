@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import FormLR,FormSVC
+from .forms import FormLR,FormSVC,nlpForm
 import numpy as np
 import os
 from sklearn.externals import joblib    
@@ -90,7 +90,6 @@ def ml_linreg(request):
         
     else:
         form = FormLR()
-        print(form)
         return render(request,"ml/ml_linreg.html",{'form': form})  
     
 def ml_svc(request):
@@ -114,9 +113,10 @@ def ml_svc(request):
         mayarray2 = myarray.reshape(1, -1)
          
         from_joblib = joblib.load(file_path) 
-        result = from_joblib.predict(mayarray2) 
-        result = result.flatten().round(1).tolist()
-        if result[0]:
+        result = from_joblib.predict(mayarray2)  
+        result = result.flatten().tolist()
+        
+        if result[0] == 0:
             result_str = "There is less than 50 % probability of the presence of heart disease in the patient."
         else:
             result_str = "There is more than 50 % probability of the presence of heart disease in the patient."
@@ -133,3 +133,26 @@ def ml_svc(request):
         print(form)
         return render(request,"ml/ml_svc.html",{'form': form})  
 
+def ml_nlp(request):
+    
+    if request.method == 'POST':
+        nlp_object = request.POST['nlpformobj']
+        test_var = [nlp_object]
+        
+        
+        module_dir = os.path.dirname(__file__)  
+        file_path = os.path.join(module_dir, 'spam_detektor.pkl')  
+        
+         
+        from_joblib = joblib.load(file_path) 
+        result = from_joblib.predict(test_var) 
+        result_final = result[0]
+                 
+        print(result)
+        form = nlpForm()
+        return render(request,"ml/ml_nlp.html",{'form': form,'myarray':result_final}) 
+
+        
+    else:
+        form = nlpForm()
+        return render(request,"ml/ml_nlp.html",{'form': form}) 
